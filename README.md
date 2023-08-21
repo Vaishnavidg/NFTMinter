@@ -1,29 +1,27 @@
-# README #
+# Blockchain Training Frontend #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This Repository should have the training assignment's code.
 
-### What is this repository for? ###
+### Assignment ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+1. Intergate https://walletconnect.com/ in Frontend
+1. Deploy a NFT(ERC721 and ERC1155) contract and do minting from the frontend using walletconnect and metamask
+	1. After minting nfts you will be able to see NFTs on https://opensea.io/ and https://rarible.com/
 
-### How do I get set up? ###
+### Branch Name and commits ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Branch name should be yourname
+* Commit should specify what changes are made 
 
-### Contribution guidelines ###
+### What to include ###
 
-* Writing tests
-* Code review
-* Other guidelines
+* The implementation
+* Test Scripts
+* Documentation and References
+* Example env
+* Setup requirements
 
-### Who do I talk to? ###
+### What not to enclude ###
 
-* Repo owner or admin
-* Other community or team contact
+* node_modules
+* envs
