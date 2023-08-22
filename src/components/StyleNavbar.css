@@ -1,0 +1,193 @@
+.main_nav{
+    color: white;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     gap: 2rem;
+     padding: 0 1rem; 
+     background-color: #131118;;
+  }
+  .logo{
+     
+  margin-left: 64px;
+  padding-top: 28px;
+  border-radius: nullpx;
+  margin-bottom: 8px;
+  
+  }
+  .logo img{
+      height: 32px;
+      width: 90px;
+  }
+  .titles{
+      display: flex;
+      justify-content: space-between;
+      gap: 48px;
+      align-items: center;
+      margin-top: 28px;
+      margin-left: 60px;
+      margin-bottom: 8px;
+  }
+  #Swap1{
+      /* height: 24px; */
+  /* width: 46px; */
+  margin-left: 16px;
+   margin-top: 0px; 
+  border-radius: nullpx;
+  
+  /* font-family: Poppins; */
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #FFFFFF;
+  
+  
+  }
+  #Pool {
+      padding: 8px 16px 8px 16px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      color: #A6A0BB;
+  }
+  #About{
+  color: #A6A0BB;
+  }
+  #Vote{
+  width: 38px;
+  color: #A6A0BB;
+  
+  
+  }
+  
+  .titles2{
+      /* display: -ms-flexbox; */
+      display: flex;
+      /* -ms-flex-pack: justify; */
+      justify-content: space-between;
+      gap: 48px;
+      /* -ms-flex-align: center; */
+      align-items: center;
+      margin-top: 10px;
+      padding-bottom: 5px;
+  }
+  #Sqa{
+          height: 40px;
+          border-radius: 100px;
+          /* padding: 8px 16px 8px 16px; */
+          border-color: #45454A;
+          background: #45454A;
+          font-size: 14px;
+          text-align: left;
+          margin-left: 358px;
+  /* color: linear-gradient(73.6deg, #85FFC4 2.11%, #5CC6FF 42.39%, #BC85FF 85.72%); */
+  
+  
+  }
+  #Sqa img{
+      height: 15px;
+  width: 43px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 12px;
+  border-radius: nullpx;
+  
+  
+  
+  }
+  #title{
+      height: 40px;
+  width: 161px;
+  /* margin-left: 91px; */
+  /* margin-top: 0px; */
+  border-radius: 100px;
+  /* padding: 8px 16px 8px 16px; */
+  background: #45454A;
+  border-color: #45454A;
+  align-items: center;
+  
+  }
+  #title img{
+      height: 15px;
+  width: 129px;
+  margin-left: 16px;
+  margin-top: 8px;
+  border-radius: nullpx;
+  
+  }
+  #dark{
+  
+      height: 40px;
+      border-radius: 100px;
+      padding: 8px 16px 8px 16px;
+      border-color: #45454A;
+      background: #45454A;
+      font-size: 14px;
+      text-align: left;
+  }
+  #dark img{
+      height: 20px;
+  width: 15.399999618530273px;
+  left: 4.300048828125px;
+  top: 4px;
+  border-radius: 0px;
+  
+  }
+  #menu{
+      height: 40px;
+  width: 56px;
+  /* margin-left: 340px; */
+  /* top: 0px; */
+  border-radius: 100px;
+  padding: 8px 16px 10px 16px;
+  background-color: #45454A;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  margin-right: 64px;
+  
+  }
+  #btn{
+    height: 48px;
+    /* width: 183px; */
+    /* margin-left: 210px; */
+    /* margin-top: 30px; */
+    border-radius: 100px;
+    padding: 12px 16px 12px 16px;
+    background: linear-gradient( 73.6deg, #171818 2.11%, #3c6e89 42.39%, #5109a9 85.72% );
+    border-color: #5cc6ff;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    
+  }
+  #btn img{
+    height:70%
+  }
+  .connect1{
+    height: 48px;
+    width: 183px;
+    /* margin-left: 210px; */
+    /* margin-top: 30px; */
+    border-radius: 100px;
+    /* padding: 12px 16px 12px 16px; */
+    background: linear-gradient(
+      73.6deg,
+      #85ffc4 2.11%,
+      #5cc6ff 42.39%,
+      #bc85ff 85.72%
+    );
+    border-color: #5cc6ff;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+
+  }
