@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './ConnectedWallet.css';
 import { ethers } from 'ethers';
 import Walletconnect from './Walletconnect';
+import NFTmint from './NFTMint';
 
 
 export default function ConnectWallet() {
@@ -60,6 +61,9 @@ export default function ConnectWallet() {
       </button>
        <div>
         <Walletconnect/>
+       </div>
+       <div>
+        <NFTmint/>
        </div>
 
       {errormessage}
