@@ -1,70 +1,39 @@
 import React, { useState } from "react";
 import "./NFTMinter.css";
-import TokenAbi from "../TokenAbi.json";
-import { ethers } from "ethers";
 import axios from "axios";
-import Walletconnect from './Walletconnect';
-// import Walletconnect from "./WalletConnect";
+import CustomButton from "./CustomButton";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+
+import {
+  useContractWrite,
+  usePrepareContractWrite,
+  useWaitForTransaction,
+} from "wagmi";
+import TokenAbi from "../TokenAbi.json";
+import { Minting } from "./Minting";
+
 const NFTApiKey = process.env.REACT_APP_API_KEY;
-// const provider = new ethers.providers.Web3Provider(window.ethereum);
-// const signer = provider.getSigner();
 
 export default function NFTmint() {
-  const contractAddress = "0x7d28BCf35f1082C10a21524f2B885BCf17772D74";
-  const [userAddress, setuserAddress] = useState("");
-  const [balance, setBalance] = useState(null);
-  const [provider, setProvider] = useState("");
+  const [userAddress, setUserAddress] = useState("");
+  const [balance, setBalance] = useState("");
+  const [Symbol, setSymbol] = useState("");
   const [Errormessage, setErrormessage] = useState("");
-  const [contract, setContract] = useState("");
   const [SelectedFile, setSelectedFile] = useState(null);
-  const [Name, setName] = useState("");
-  const [Type, setType] = useState("");
-  const [Description, setDescription] = useState("");
-  const [Image, setImage] = useState("");
   const [MetadataUrl, setMetadataUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const getBalance = (accountAddress) => {
-    window.ethereum
-      .request({
-        method: "eth_getBalance",
-        params: [String(accountAddress), "latest"],
-      })
-      .then((balance) => {
-        console.log(balance);
-        setBalance(ethers.utils.formatEther(balance));
-      });
-  };
+ 
 
-  const accountChange = (AccountName) => {
-    setuserAddress(AccountName);
-    getBalance(AccountName);
-  };
-  //1.ConnectWallet
-  const ConnectWallet = () => {
-    if (window.ethereum) {
-      const providers = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = providers.getSigner();
-      setProvider(providers);
-      if (provider) {
-        window.ethereum
-          .request({ method: "eth_requestAccounts" })
-          .then((result) => {
-            accountChange(result[0]);
-            setContract(
-              new ethers.Contract(contractAddress, TokenAbi, signer)
-            );
-          });
-      }
-    } else {
-      setErrormessage("Install Metamask! ");
-    }
-  };
-
-  //handleInput
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
+
   const uploadImage = async () => {
+    setIsLoading(true);
+
     if (!SelectedFile) return null;
 
     const formData = new FormData();
@@ -83,77 +52,69 @@ export default function NFTmint() {
 
       if (response.data) {
         const imageUrl = `https://${response.data.value.cid}.ipfs.nftstorage.link/${response.data.value.files[0].name}`;
-        setName(response.data.value.files[0].name);
-        setImage(imageUrl);
-        setType(response.data.value.files[0].type);
-        setDescription("This image shows the true nature of NFT.");
-        console.log("IPFS URL:", imageUrl);
+
+        // Set the Name, Description, and Image here
+        const name = response.data.value.files[0].name;
+        const description = "This image shows the true nature of NFT.";
+        const image = imageUrl;
+        // Create the metadata file
+        const metadataJSON = JSON.stringify({
+          name: name,
+          description: description,
+          image: image,
+        });
+
+        const metadataBlob = new Blob([metadataJSON], {
+          type: "application/json",
+        });
+
+        const metadataFile = new File([metadataBlob], "metadata.json");
+
+        // Display the confirmation dialog
+        confirmAlert({
+          title: "Confirm",
+          message: "Do you want to proceed?",
+          buttons: [
+            {
+              label: "Yes",
+              onClick: () => MintNFT(metadataFile),
+            },
+            {
+              label: "No",
+              onClick: () => setIsLoading(false),
+            },
+          ],
+        });
+
         return imageUrl;
       }
     } catch (error) {
       console.error("Error uploading image:", error);
+      setIsLoading(false);
       throw error;
     }
   };
 
-  const createMetadataFile = () => {
-    if (SelectedFile) {
-      const metadataJSON = JSON.stringify({
-        name: Name,
-        description: Description,
-        image: Image,
-      });
-
-      const metadataBlob = new Blob([metadataJSON], {
-        type: "application/json",
-      });
-
-      return new File([metadataBlob], "metadata.json");
-    }
-    return null;
-  };
-  const Minting=async()=>{
-    if(userAddress && MetadataUrl){
-      try{
-        console.log("minting");
-        const rawTxn = await contract.safeMint(userAddress,"121",MetadataUrl);
-        const txResponse = await rawTxn;
-        console.log('Transaction sent:', txResponse);
-        await txResponse.wait();
-        console.log('Transaction confirmed');
-      }catch(error){
-
-      }
-    }
-  }
-  const MintNFT = async () => {
+  const MintNFT = async (metadataFile) => {
     try {
-      const imageUploadResponse = await uploadImage();
+      if (metadataFile) {
+        const metadataFormData = new FormData();
+        metadataFormData.append("file", metadataFile);
 
-      if (imageUploadResponse) {
-        const metadataFile = createMetadataFile();
-        if (metadataFile) {
-          const metadataFormData = new FormData();
-          metadataFormData.append("file", metadataFile);
-
-          const metadataResponse = await axios.post(
-            "https://api.nft.storage/upload",
-            metadataFormData,
-            {
-              headers: {
-                Authorization: `Bearer ${NFTApiKey}`,
-              },
-            }
-          );
-
-          if (metadataResponse.data) {
-            const metadataUrl = `https://${metadataResponse.data.value.cid}.ipfs.nftstorage.link/${metadataResponse.data.value.files[0].name}`;
-            setMetadataUrl(metadataUrl);
-            console.log("metadata:", String(MetadataUrl));
-            console.log(String(userAddress));
-            Minting();
-           
+        const metadataResponse = await axios.post(
+          "https://api.nft.storage/upload",
+          metadataFormData,
+          {
+            headers: {
+              Authorization: `Bearer ${NFTApiKey}`,
+            },
           }
+        );
+
+        if (metadataResponse.data) {
+          const metadataUrl = `https://${metadataResponse.data.value.cid}.ipfs.nftstorage.link/${metadataResponse.data.value.files[0].name}`;
+          console.log(metadataUrl);
+          setMetadataUrl(metadataUrl);
         }
       }
     } catch (error) {
@@ -162,15 +123,24 @@ export default function NFTmint() {
     }
   };
 
+  const handleAddress = (data) => {
+    setUserAddress(data);
+  };
+
+  const handleBalance = (data) => {
+    setBalance(data.formatted);
+    setSymbol(data.symbol);
+  };
+
   return (
     <div>
       <h1>NFT Minter</h1>
       <div className="card1">
-        <button className="token" onClick={ConnectWallet}>
-          Connect Wallet
-        </button>
         <div className="cont3">
-          <Walletconnect/>
+          <CustomButton
+            sendAddress={handleAddress}
+            sendBalance={handleBalance}
+          />
         </div>
         <div className="cont3">
           <p id="t1">Address: </p>
@@ -178,7 +148,9 @@ export default function NFTmint() {
         </div>
         <div className="cont3">
           <p id="t1">Balance: </p>
-          <p id="t2">{balance}</p>
+          <p id="t2">
+            {balance} {Symbol}
+          </p>
         </div>
         <div>
           <input
@@ -188,9 +160,18 @@ export default function NFTmint() {
             onChange={handleFileChange}
           />
         </div>
-        <button className="connect2" onClick={MintNFT}>
-          Mint NFT
+        <button
+          disabled={isLoading || isSuccess}
+          className="connect2"
+          onClick={uploadImage}
+        >
+          {" "}
+          Upload Image to Mint
         </button>
+        <div>
+          <Minting userAddress={userAddress} MetadataUrl={MetadataUrl} />
+        </div>
+
         {Errormessage}
       </div>
     </div>

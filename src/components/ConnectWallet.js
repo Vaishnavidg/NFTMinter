@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ConnectedWallet.css';
 import { ethers } from 'ethers';
-import Walletconnect from './Walletconnect';
+// import Walletconnect from './Walletconnect';
 import NFTmint from './NFTMint';
 
 
@@ -59,9 +59,9 @@ export default function ConnectWallet() {
       <button className="connect" onClick={ConnectWallet}>
         MetaMask Connect
       </button>
-       <div>
+       {/* <div>
         <Walletconnect/>
-       </div>
+       </div> */}
        <div>
         <NFTmint/>
        </div>
