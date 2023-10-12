@@ -1,19 +1,16 @@
 import { useWeb3Modal } from "@web3modal/react";
 import "./StyleNavbar.css";
 import { useState, useEffect } from "react";
-import { useAccount, useBalance, useDisconnect } from "wagmi"; 
+import { useAccount, useBalance, useDisconnect } from "wagmi";
 import { getPublicClient } from "@wagmi/core";
 
 export default function CustomButton({ sendAddress, sendBalance }) {
   const [loading, setLoading] = useState(false);
-  const { open, provider } = useWeb3Modal(); 
+  const { open, provider } = useWeb3Modal();
   const { isConnected, address } = useAccount();
   const { data, isError, isLoading } = useBalance({
     address: address,
   });
-
-  if (isLoading) return <div>Fetching balance…</div>;
-  if (isError) return <div>Error fetching balance</div>;
 
   const { disconnect } = useDisconnect();
   const publicClient = getPublicClient();
@@ -22,18 +19,25 @@ export default function CustomButton({ sendAddress, sendBalance }) {
   const [Balance, setBalance] = useState("");
 
   useEffect(() => {
+    if (isLoading) {
+      return <div>Fetching balance…</div>;
+    }
+
+    if (isError) {
+      return <div>Error fetching balance</div>;
+    }
+
     if (isConnected) {
       // Fetch user's address
       setUserAddress(address);
       setBalance(data);
       sendBalance(data);
-
       sendAddress(address);
     } else {
       setUserAddress(null);
       setBalance("");
     }
-  }, [isConnected, address]);
+  }, [isLoading, isError, isConnected, address, data]);
 
   const label = isConnected ? "Disconnect" : "Connect Custom";
 
