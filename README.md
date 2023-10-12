@@ -25,3 +25,8 @@ This Repository should have the training assignment's code.
 
 * node_modules
 * envs
+
+##Output##
+[![Video](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+
+[NFTMinting.webm](https://github.com/Vaishnavidg/NFTMinter/assets/54136990/4cd252d0-72de-4a15-8975-c654f7a08432)
