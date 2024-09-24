@@ -1,0 +1,231 @@
+.card {
+    height: 432px;
+    width: 600px;
+    margin-left: 488.00000000000006px;
+    margin-top: 128px;
+    border-radius: 8px;
+    padding: 24px 24px 32px 24px;
+    background: #131118;
+    text-align: center;
+  }
+  .cont1 {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+  }
+  h6{
+    text-align: center;
+  }
+  #Swap {
+    height: 28px;
+    margin: 10px 20px 30px 40px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #ffffff;
+  }
+  .setting {
+    margin-top: 7px;
+    margin-left: 158.38px;
+    color: #ffffff;
+    height: 18px;
+    width: 17.23863410949707px;
+  }
+  .cont2 {
+    display: flex;
+    flex-direction: row;
+    /* margin-top: 30px; */
+    /* margin: 0px; */
+  }
+  .cont2 #t1 {
+    margin-left: 20px;
+    border-radius: nullpx;
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+  }
+  .cont2 #t2 {
+    margin-left: 20px;
+    margin-top: 4px;
+    border-radius: nullpx;
+    font-size: 20px;
+    color: #ffffff;
+  }
+  .cont3 {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+  }
+  .cont3 #t2 {
+    margin-left: 20px;
+    /* margin-top: 4px; */
+    border-radius: nullpx;
+    font-size: 20px;
+    color: #ffffff;
+  }
+  .cont3 #t1 {
+    margin-left: 20px;
+    margin-top: 4px;
+    border-radius: nullpx;
+    font-size: 20px;
+    color: #ffffff;
+  }
+  .cont3 img {
+    height: 40px;
+    margin-left: 100px;
+  }
+  .cont3 p {
+    margin-left: 8px;
+    margin-top: 6px;
+    border-radius: nullpx;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+  }
+  .cont3 .arrow {
+    margin-left: 16px;
+    margin-top: 8px;
+    color: #ffffff;
+  }
+  
+  .cont6 {
+    display: flex;
+    flex-direction: row;
+    margin-top: -24px;
+  }
+  .cont6 #t1 {
+    margin-top: 0px;
+    border-radius: nullpx;
+    letter-spacing: 0em;
+    color: #ffffff;
+  }
+  .cont7 {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+  }
+  #t2 {
+    margin-top: 4px;
+    border-radius: nullpx;
+    font-size: 24px;
+    font-weight: 700;
+    color: #e7e4f0;
+  }
+  #st_search{
+    height: 42.00021362304688px;
+  width: 416px;
+  /* margin-left: 20px; */
+  /* margin: 16px; */
+  border-radius: 8px;
+  background-color: #45454a;
+  font-size: 14px;
+  color: white;
+
+}
+  
+  .token {
+    height: 48px;
+    width: 183px;
+    margin-left: 240px;
+    margin-top: 1px;
+    border-radius: 100px;
+    padding: 12px 16px 12px 16px;
+    background: linear-gradient(
+      73.6deg,
+      #85ffc4 2.11%,
+      #5cc6ff 42.39%,
+      #bc85ff 85.72%
+    );
+    border-color: #5cc6ff;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+  .cont8 {
+    display: flex;
+    flex-direction: row;
+    margin-top: -53px;
+  }
+  .cont8 p {
+    color: #a6a0bb;
+  }
+  .cont9 {
+    height: 48px;
+    width: 384px;
+    margin-left: 16px;
+    margin-top: 8px;
+    border-radius: 100px;
+    padding: 12px 16px 12px 16px;
+    background: #2f2a3c;
+    /*  */
+    /* font-family: Poppins; */
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #1c1924;
+    margin-bottom: 32px;
+  }
+  .connect{
+    height: 48px;
+    width: 183px;
+    /* margin-left: 210px; */
+    margin-top: 70px;
+    border-radius: 100px;
+    /* padding: 12px 16px 12px 16px; */
+    background: linear-gradient(
+      73.6deg,
+      #85ffc4 2.11%,
+      #5cc6ff 42.39%,
+      #bc85ff 85.72%
+    );
+    border-color: #5cc6ff;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .connect2{
+    height: 48px;
+    width: 183px;
+    /* margin-left: 210px; */
+    margin-top: 20px;
+    border-radius: 100px;
+    /* padding: 12px 16px 12px 16px; */
+    background: linear-gradient(
+      73.6deg,
+      #85ffc4 2.11%,
+      #5cc6ff 42.39%,
+      #bc85ff 85.72%
+    );
+    border-color: #5cc6ff;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 20px;
+  }
+  .card1{
+    height: 700px;
+    width: 700px;
+    margin-left: 480.00000000000006px;
+    margin-top: 80px;
+    border-radius: 8px;
+    padding: 24px 24px 32px 24px;
+    background: #131118;
+    text-align: center;  
+  }
+  
+  
